@@ -1,0 +1,16 @@
+body {
+	background-color: #262626;
+}
+
+
+#mainfrm {
+	margin-top: 20%;
+}
+
+#searchBox {
+	background-color: #262626;
+	border-color: chartreuse;
+	border-radius: 50px;
+	height: 7.2%;
+	width: 4.5%;
+}

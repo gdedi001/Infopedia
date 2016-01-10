@@ -4,17 +4,21 @@
 		<meta charset="UTF-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-		<link href="style.css" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+		<link href="css/animate.css" rel="stylesheet">
+		
+		<link href="css/style.css" rel="stylesheet">
 	</head>
 	<body>
 		<div class="container-fluid">
 			<div class="row text-center">
-				<div class="col-md-12" id='test'>
+				<div class="col-md-12">
 					<!-- Maginifying glass icon -->
-					<span id="magnify" style="display:block"><i class="glyphicon glyphicon-search"></i></span>
+					<span style="display:block"><i id="magnify" class="glyphicon glyphicon-search"></i></span>
+					<h1 id="label">Click icon to continue</h1>
 					<form id='mainfrm'>
-						<!--<input id='searchBox' type='text' name='search' disabled>
-						<div id="handle"></div>-->
+						<!--<input id='searchBox' type='text' name='search' disabled>-->
+						<span id="textbox"></span>
 					</form>
 				</div>
 			</div>
@@ -23,6 +27,6 @@
 		<!-- CDN's & local script(s) -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<script src="app.js"></script>
+		<script src="js/app.js"></script>
 	</body>
 </html>

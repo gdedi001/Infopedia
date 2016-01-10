@@ -2,17 +2,22 @@ body {
 	background-color: #262626;
 }
 
-
-#mainfrm {
-	margin-top: 20%;
-}
-
 #magnify {
 	color: chartreuse;
 	font-size: 50px;
 	margin-top: 25%;;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#label {
+	color: azure;
+	font-family: 'Lato', sans-serif;
+	font-size: 110%;
+}
+
+#mainfrm {
+	margin-top: 20%;
 }
 
 #searchBox {
@@ -24,17 +29,4 @@ body {
 	width: 4.5%;
 }
 
-/*
-	#handle {
-	height: 19px;
-	border-right: 1.5px solid chartreuse;
-	border-width: thick;
-	-webkit-transform: rotate(-45deg);  Chrome, Safari, Opera 
-	-moz-transform: rotate(-45deg); /* Mozilla 
-	-ms-transform: rotate(-45deg); /* IE 
-	transform: rotate(-45deg);
-	position: absolute;
-	top: 91%;
-	left: 52%;
-}
-*/
+

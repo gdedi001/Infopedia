@@ -17,16 +17,47 @@ body {
 }
 
 #mainfrm {
-	margin-top: 20%;
+	/*margin-top: 20%;*/
 }
 
 #searchBox {
 	background-color: #262626;
 	border-color: chartreuse;
-	border-radius: 50%;
-	border-width: thick;
-	height: 4.2%;
-	width: 4.5%;
+	border-radius: 25px;
+	border-width: 5px;
+	color: chartreuse;
+}
+ /* The following CSS usually removes the default highlight-border */
+#searchBox:focus {
+	outline: none;
 }
 
+.easeIn {
+	/* Chrome, Safari, Opera */
+    -webkit-animation-name: easeIn;
+    -webkit-animation-duration: 3s;
+	/* Mozilla Firefox */
+    -moz-animation-name: easeIn; 
+    -moz-animation-duration: 3s; 
+	/* Standard */
+    animation-name: easeIn;
+    animation-duration: 3s;
+}
 
+/* Chrome, Safari, Opera */
+@-webkit-keyframes easeIn {
+    from {opacity: 0.0;}
+    to {opacity: 1;}
+}
+
+/* Mozilla */
+@-moz-keyframes easeIn {
+    from {opacity: 0.0;}
+    to {opacity: 1;}
+}
+
+/* Standard */
+@keyframes easeIn {
+    from {opacity: 0.0;}
+    to {opacity: 1;}
+}

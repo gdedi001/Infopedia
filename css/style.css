@@ -24,9 +24,12 @@ body {
 	background-color: #262626;
 	border-color: chartreuse;
 	border-radius: 25px;
-	border-width: 5px;
+	border-width: 3px;
 	color: chartreuse;
+	font-size: 125%;
+	letter-spacing: 2px;
 }
+
  /* The following CSS usually removes the default highlight-border */
 #searchBox:focus {
 	outline: none;

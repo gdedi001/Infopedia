@@ -1,9 +1,8 @@
-(function() {
-		/*
-	var api = 'http://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=',
-	 	cb = '&callback=JSON_CALLBACK',
-		pageLink = 'http://en.wikipedia.org/?curid=';
-		*/
+(function() {	
+	var url = 'http://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
+	var page = 'http://en.wikipedia.org/?curid=';
+	var input;
+	var result;
 	
 	/* animation function */
 	function glassClick(element, animation1, animation2) {		
@@ -22,15 +21,19 @@
 			}, 1800);
 		});
 	}
+	
+	// Once AJAX is successful, place the searchbar at top of page to make room for necessary info
+	function placeAtTop(element) {
+		element = $(element);
+		element.addClass("toTop");
+	}
 		
 	$(document).ready(function() {
-		var url = 'http://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
-		
 		glassClick('#magnify', 'pulse', 'zoomOutUp');
 		
 		$('#mainfrm').on('submit', function(event){
 			event.preventDefault(); // Prevent browser from submitting
-			var input = $('#searchBox').val(); // Obtain value from input textbox
+			input = $('#searchBox').val(); // Obtain value from input textbox
 			
 			// Perform AJAX request and perform required actions
 			$.ajax({
@@ -39,24 +42,25 @@
 				contentType: "application/json; charset=utf-8",
         		dataType: "json",
         		success: function (data, textStatus, jqXHR) {
-					console.log(data);
+					result = data.query.pages;
+					console.log(result);
+					console.log(Object.keys(result).length);
+					// placeAtTop("#magnify"); remove comment
+					var listItem = $("<ul></ul>");
+					$.each(result, function(key, value){
+						console.log(key + " " + value.extract);
+						$('<a href=' + page+value.pageid + '>' + '<li class="section"><h3>' + value.title +'</h3>'+
+						  '<p>'+value.extract+'</p></li></a>').appendTo(listItem);
+						return listItem;
+					});
+					listItem.appendTo('#content');
         		},
         		error: function (errorMessage) {
-					alert('Error occured, please contact a qualified developer.');
+					alert('An error occurred.');
 				}
 			});
 		});
 	});
 })();
-
-
-
-
-
-
-
-
-
-
 
 

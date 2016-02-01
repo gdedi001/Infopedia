@@ -5,9 +5,13 @@ body {
 #magnify {
 	color: chartreuse;
 	font-size: 50px;
-	margin-top: 25%;;
+	margin-top: 25%;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.toTop {
+	margin-top: 0px;
 }
 
 #label {
@@ -33,6 +37,25 @@ body {
  /* The following CSS usually removes the default highlight-border */
 #searchBox:focus {
 	outline: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.section {
+	background-color: cornsilk;
+	color: black;
+	margin: 4px 0 4px 0;
 }
 
 .easeIn {

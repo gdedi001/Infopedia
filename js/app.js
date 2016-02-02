@@ -36,7 +36,7 @@
 			event.preventDefault(); // Prevent browser from submitting
 			input = $('#searchBox').val(); // Obtain value from input textbox
 			
-			// Perform AJAX request
+			// Perform AJAX request: '&callback=?' in url used as jsonp (json w/ padding) 
 			$.ajax({
 				type: "GET",
 				url: "http://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=" + input + "&callback=?",

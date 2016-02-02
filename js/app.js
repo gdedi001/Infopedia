@@ -1,4 +1,5 @@
 (function() {	
+	
 	var url = 'http://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
 	var page = 'http://en.wikipedia.org/?curid=';
 	var input;
@@ -35,23 +36,23 @@
 			event.preventDefault(); // Prevent browser from submitting
 			input = $('#searchBox').val(); // Obtain value from input textbox
 			
-			// Perform AJAX request and perform required actions
+			// Perform AJAX request
 			$.ajax({
 				type: "GET",
 				url: "http://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=" + input + "&callback=?",
 				contentType: "application/json; charset=utf-8",
         		dataType: "json",
         		success: function (data, textStatus, jqXHR) {
+					$('#magnify').css('margin-top', '0px');
 					result = data.query.pages;
 					console.log(result);
 					console.log(Object.keys(result).length);
-					// placeAtTop("#magnify"); remove comment
 					var listItem = $("<ul></ul>");
 					$.each(result, function(key, value){
 						console.log(key + " " + value.extract);
-						$('<a href=' + page+value.pageid + '>' + '<li class="section"><h3>' + value.title +'</h3>'+
+						$('<a href=' + page+value.pageid + 'target="_blank">' + '<li class="section"><h3>' + value.title +'</h3>'+
 						  '<p>'+value.extract+'</p></li></a>').appendTo(listItem);
-						return listItem;
+						// return listItem;
 					});
 					listItem.appendTo('#content');
         		},

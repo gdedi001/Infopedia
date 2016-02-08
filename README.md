@@ -1,1 +1,3 @@
 # infopedia
+<b>Welcome to Infopedia!</b> - A front end web application inspired by FreeCodeCamp.
+More info coming soon...

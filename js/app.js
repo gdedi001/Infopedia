@@ -1,9 +1,10 @@
 (function() {	
 	
-	var url = 'http://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch='; // wikipedia url used in request 
-	var page = 'http://en.wikipedia.org/?curid='; // base url to access response articles
-	var input; // holds the value from the textbox
-	var result; // holds response ajax data
+	var url = 'http://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=', // wikipedia url used in request 
+		page = 'http://en.wikipedia.org/?curid=', // base url to access response articles
+		input, // holds the value from the textbox
+		result, // holds response ajax data
+		listItem = $("<ul></ul>"); // 
 	
 	/* animation function */
 	function glassClick(element, animation1, animation2) {		
@@ -22,9 +23,15 @@
 			}, 1800);
 		});
 	}
+	
+	// When invoked, will remove all elements with corresponding class name
+	function clearItems(className) {
+		$(className).remove();
+	}
 			
 	$(document).ready(function() {
-		var enabled = false;
+		var enabled = false; // used to determine if the user has started the ajax request
+		
 		glassClick('#magnify', 'pulse', 'zoomOutUp');
 		
 		$('#mainfrm').on('submit', function(event){
@@ -37,26 +44,30 @@
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
 				success: function (data, textStatus, jqXHR) {
-					//$('#magnify').css('margin-top', '0px');
+					enabled = true;
+					clearItems('.section');
 					$('#magnify').addClass('toTop');
 					result = data.query.pages;
 					//console.log(result); // remove comment for release
 					//console.log(Object.keys(result).length); // remove comment for release
-					var listItem = $("<ul></ul>");
+					//listItem = $("<ul></ul>");
 					$.each(result, function(key, value){
 						//console.log(key + " " + value.extract);
 						$('<a href=' + page+value.pageid + 'target="_blank">' + '<li class="section"><h3>' + value.title + '</h3>'+
 						  '<p>' + value.extract + '</p></li></a>').appendTo(listItem);
 					});
 					listItem.appendTo('#content');
-					enabled = true;
         		},
 				error: function (errorMessage) {
 					alert('Error: ' + errorMessage);
 				},
 				complete: function() {
 					if (enabled) {
-						//console.log('enabled true');
+						console.log('enabled true');
+						console.log(input.length);
+						if (input.length === 0) {
+							
+						}
 					}
 				}
 			});

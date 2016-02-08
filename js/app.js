@@ -35,7 +35,7 @@
 				type: "GET",
 				url: url + input + "&callback=?", // '&callback=?' used for jsonp (json w/padding)
 				contentType: "application/json; charset=utf-8",
-        		dataType: "json",
+				dataType: "json",
         		success: function (data, textStatus, jqXHR) {
 					//$('#magnify').css('margin-top', '0px');
 					$('#magnify').addClass('toTop');
@@ -51,7 +51,7 @@
 					listItem.appendTo('#content');
 					enabled = true;
         		},
-        		error: function (errorMessage) {
+				error: function (errorMessage) {
 					alert('Error: ' + errorMessage);
 				},
 				complete: function() {

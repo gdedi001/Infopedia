@@ -24,6 +24,7 @@
 	}
 			
 	$(document).ready(function() {
+		var enabled = false;
 		glassClick('#magnify', 'pulse', 'zoomOutUp');
 		
 		$('#mainfrm').on('submit', function(event){
@@ -39,18 +40,24 @@
 					//$('#magnify').css('margin-top', '0px');
 					$('#magnify').addClass('toTop');
 					result = data.query.pages;
-					console.log(result); // remove comment for release
-					console.log(Object.keys(result).length); // remove comment for release
+					//console.log(result); // remove comment for release
+					//console.log(Object.keys(result).length); // remove comment for release
 					var listItem = $("<ul></ul>");
 					$.each(result, function(key, value){
-						console.log(key + " " + value.extract);
+						//console.log(key + " " + value.extract);
 						$('<a href=' + page+value.pageid + 'target="_blank">' + '<li class="section"><h3>' + value.title + '</h3>'+
 						  '<p>' + value.extract + '</p></li></a>').appendTo(listItem);
 					});
 					listItem.appendTo('#content');
+					enabled = true;
         		},
         		error: function (errorMessage) {
 					alert('Error: ' + errorMessage);
+				},
+				complete: function() {
+					if (enabled) {
+						//console.log('enabled true');
+					}
 				}
 			});
 		});

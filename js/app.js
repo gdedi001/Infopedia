@@ -28,14 +28,16 @@
 		
 		$('#mainfrm').on('submit', function(event){
 			event.preventDefault(); // Prevent browser from submitting
-			input = $('#searchBox').val(); // Obtain value from input textbox		
+			input = $('#searchBox').val(); // Obtain value from input textbox
+			
 			$.ajax({
 				type: "GET",
 				url: url + input + "&callback=?", // '&callback=?' used for jsonp (json w/padding)
 				contentType: "application/json; charset=utf-8",
         		dataType: "json",
         		success: function (data, textStatus, jqXHR) {
-					$('#magnify').css('margin-top', '0px');
+					//$('#magnify').css('margin-top', '0px');
+					$('#magnify').addClass('toTop');
 					result = data.query.pages;
 					console.log(result); // remove comment for release
 					console.log(Object.keys(result).length); // remove comment for release
@@ -48,7 +50,7 @@
 					listItem.appendTo('#content');
         		},
         		error: function (errorMessage) {
-					alert('An error occurred.');
+					alert('Error: ' + errorMessage);
 				}
 			});
 		});

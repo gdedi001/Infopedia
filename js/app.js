@@ -45,8 +45,8 @@
         		success: function (data, textStatus, jqXHR) {
 					$('#magnify').css('margin-top', '0px');
 					result = data.query.pages;
-					console.log(result);
-					console.log(Object.keys(result).length);
+					console.log(result); // remove comment for release
+					console.log(Object.keys(result).length); // remove comment for release
 					var listItem = $("<ul></ul>");
 					$.each(result, function(key, value){
 						console.log(key + " " + value.extract);

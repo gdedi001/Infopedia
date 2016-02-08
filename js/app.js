@@ -28,14 +28,13 @@
 		
 		$('#mainfrm').on('submit', function(event){
 			event.preventDefault(); // Prevent browser from submitting
-			input = $('#searchBox').val(); // Obtain value from input textbox
-			
-			// Perform AJAX request: '&callback=?' in url used as jsonp (json w/ padding) 
+			input = $('#searchBox').val(); // Obtain value from input textbox		
 			$.ajax({
 				type: "GET",
-				url: "http://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=" + input + "&callback=?",
+				url: url + input + "&callback=?", // '&callback=?' used for jsonp (json w/padding)
 				contentType: "application/json; charset=utf-8",
         		dataType: "json",
+				
         		success: function (data, textStatus, jqXHR) {
 					$('#magnify').css('margin-top', '0px');
 					result = data.query.pages;
@@ -46,7 +45,6 @@
 						console.log(key + " " + value.extract);
 						$('<a href=' + page+value.pageid + 'target="_blank">' + '<li class="section"><h3>' + value.title +'</h3>'+
 						  '<p>'+value.extract+'</p></li></a>').appendTo(listItem);
-						// return listItem;
 					});
 					listItem.appendTo('#content');
         		},

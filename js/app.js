@@ -36,7 +36,7 @@
 				url: url + input + "&callback=?", // '&callback=?' used for jsonp (json w/padding)
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
-        		success: function (data, textStatus, jqXHR) {
+				success: function (data, textStatus, jqXHR) {
 					//$('#magnify').css('margin-top', '0px');
 					$('#magnify').addClass('toTop');
 					result = data.query.pages;

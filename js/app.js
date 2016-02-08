@@ -22,13 +22,7 @@
 			}, 1800);
 		});
 	}
-	
-	// Once AJAX is successful, place the searchbar at top of page to make room for necessary info
-	function placeAtTop(element) {
-		element = $(element);
-		element.addClass("toTop");
-	}
-		
+			
 	$(document).ready(function() {
 		glassClick('#magnify', 'pulse', 'zoomOutUp');
 		

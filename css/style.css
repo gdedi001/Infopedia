@@ -10,11 +10,9 @@ body {
 	margin-right: auto;
 }
 
-/*
 .toTop {
-	margin-top: 0px;
+	margin-top: 0px !important;
 }
-*/
 
 #label {
 	color: azure;

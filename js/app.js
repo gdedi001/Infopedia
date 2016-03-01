@@ -4,7 +4,7 @@
 		page = 'http://en.wikipedia.org/?curid=', // base url to access response articles
 		input, // holds the value from the textbox
 		result, // holds response ajax data
-		listItem = $("<ul></ul>"); // 
+		list = $("<ul id='list'></ul>"); // 
 	
 	/* animation function */
 	function glassClick(element, animation1, animation2) {		
@@ -19,6 +19,8 @@
 			}, 830);
 			window.setTimeout( function(){
 				$('#mainfrm').append("<input id='searchBox' type='text' name='search' style='text-align:center' autofocus>");
+				// $('#mainfrm').append("<span <i class=glyphicon glyphicon-search form-control-feedback></i></span>");
+				 $('#mainfrm').append("<span><i class=glyphicon glyphicon-remove></i></span>");
 				$('#mainfrm').addClass('easeIn');
 			}, 1800);
 		});
@@ -32,7 +34,12 @@
 	$(document).ready(function() {
 		var enabled = false; // used to determine if the user has started the ajax request
 		
-		glassClick('#magnify', 'pulse', 'zoomOutUp');
+		glassClick('#magnifyingGlass', 'pulse', 'zoomOutUp');
+		
+		/*$('a').on('click', function(event){
+			event.preventDefault();
+			
+		});*/
 		
 		$('#mainfrm').on('submit', function(event){
 			event.preventDefault(); // Prevent browser from submitting
@@ -45,18 +52,16 @@
 				dataType: "json",
 				success: function (data, textStatus, jqXHR) {
 					enabled = true;
-					clearItems('.section');
-					$('#magnify').addClass('toTop');
+					clearItems('.article'); // removes all items for the page. Allows for clean repopulation of articles
+					$('#magnifyingGlass').addClass('toTop');
 					result = data.query.pages;
-					//console.log(result); // remove comment for release
-					//console.log(Object.keys(result).length); // remove comment for release
-					//listItem = $("<ul></ul>");
+					
+					// iterate through the 'result' collection of objects and append properties to listItem
 					$.each(result, function(key, value){
-						//console.log(key + " " + value.extract);
-						$('<a href=' + page+value.pageid + 'target="_blank">' + '<li class="section"><h3>' + value.title + '</h3>'+
-						  '<p>' + value.extract + '</p></li></a>').appendTo(listItem);
+						$('<a href=' + page+value.pageid + '>' + '<li class="article"><h3>' + value.title + '</h3>'+
+						  '<p>' + value.extract + '</p></li></a>').appendTo(list);
 					});
-					listItem.appendTo('#content');
+					list.appendTo('#content');
         		},
 				error: function (errorMessage) {
 					alert('Error: ' + errorMessage);
@@ -66,7 +71,7 @@
 						console.log('enabled true');
 						console.log(input.length);
 						if (input.length === 0) {
-							
+							clearItems('.article');
 						}
 					}
 				}

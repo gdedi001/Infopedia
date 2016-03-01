@@ -2,7 +2,7 @@ body {
 	background-color: #262626;
 }
 
-#magnify {
+#magnifyingGlass {
 	color: chartreuse;
 	font-size: 50px;
 	margin-top: 25%;
@@ -14,14 +14,14 @@ body {
 	margin-top: 0px !important;
 }
 
+#mainfrm {
+	margin-bottom: 10px;
+}
+
 #label {
 	color: azure;
 	font-family: 'Lato', sans-serif;
 	font-size: 110%;
-}
-
-#mainfrm {
-	/*margin-top: 20%;*/
 }
 
 #searchBox {
@@ -48,14 +48,26 @@ a:hover {
     cursor: pointer;
 }
 
-ul {
+#list {
+	padding-left: 40px;
+	padding-right: 40px;
 	list-style-type: none;
 }
 
-.section {
-	background-color: cornsilk;
+.article {
+	background-color: rgba(255, 243, 236, 1);
 	color: black;
-	margin: 4px 0 4px 0;
+	margin: 12px 0 12px 0;
+	padding: 1%;
+}
+
+.article:hover {
+	border-left: 7px solid chartreuse;
+}
+
+h3 {
+	margin-top: 0px;
+	margin-bottom: 15px;
 }
 
 .easeIn {
